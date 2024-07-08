@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, FunctionComponentElement, ReactHTMLElement, ReactNode } from 'react';
 import { BurgerMenuWrapper } from './BurgerMenu.styled';
 import './BurgerMenu.css';
 import Hamburger from 'hamburger-react';
@@ -6,10 +6,7 @@ import Hamburger from 'hamburger-react';
 interface BurgerMenuProps {}
 
 const hideShowBurger = (flag: boolean, links: HTMLElement) => {
-
-   flag? console.log('ShowBurger') : console.log('HideBurger');
-   console.log('links', links?.style.display);
-   // flag? links.style.display = 'block' : links.style.display = 'none';
+   flag? links.style.display = 'block' : links.style.display = 'none';
 }
 
 const BurgerMenu: FC<BurgerMenuProps> = (): React.FunctionComponentElement<BurgerMenuProps> => {
