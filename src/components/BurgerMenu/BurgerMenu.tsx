@@ -1,23 +1,25 @@
-import React, { FC, FunctionComponentElement, ReactHTMLElement, ReactNode } from 'react';
+import React, { FC, Component, useState } from 'react';
 import { BurgerMenuWrapper } from './BurgerMenu.styled';
 import './BurgerMenu.css';
 import Hamburger from 'hamburger-react';
 
 interface BurgerMenuProps {}
 
-const hideShowBurger = (flag: boolean, links: HTMLElement) => {
-   flag? links.style.display = 'block' : links.style.display = 'none';
-}
 
 const BurgerMenu: FC<BurgerMenuProps> = (): React.FunctionComponentElement<BurgerMenuProps> => {
 
-   const links = document.getElementById('myLinks') as HTMLElement;
+   const [isOpen, setOpen] = useState(false);
+
+   const hideShowBurger = (e: React.FormEvent<HTMLElement>):void => {
+      const links = e.currentTarget.nextElementSibling as HTMLElement;
+      links.style.display = isOpen? 'none' : 'block';
+   }
 
    return (
       <BurgerMenuWrapper className='topnav'>
-         <div style={{backgroundColor: 'grey', width: 'fit-content', height: 51 + 'px', float: 'left'}}>
+         <div style={{backgroundColor: 'grey', width: 'fit-content', height: 51 + 'px', float: 'left'}} onClick={hideShowBurger}>
             <Hamburger color='whitesmoke' background-color='grey' rounded
-            onToggle={flag => {hideShowBurger(flag, links)}}/>
+            toggled={isOpen} toggle={setOpen}/>
          </div>
          
          <div id="myLinks">

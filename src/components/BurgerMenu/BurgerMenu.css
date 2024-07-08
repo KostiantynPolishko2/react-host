@@ -8,8 +8,8 @@
 }
 
 /* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #myLinks {
-    display: block;
+#myLinks {
+    display: none;
 }
 
 /* Style navigation menu links */
